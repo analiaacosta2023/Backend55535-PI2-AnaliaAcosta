@@ -1,0 +1,80 @@
+<header>
+  <nav class="navbar navbar-expand-lg bg-dark fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg"
+        aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg"
+        aria-labelledby="navbarOffcanvasLgLabel">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/products">Productos</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorías
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/products?category=Home+%26+Kitchen">Bazar y cocina</a></li>
+              <li><a class="dropdown-item" href="/products?category=Electronics">Electrónica</a></li>
+              <li><a class="dropdown-item" href="/products?category=Furniture">Muebles</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <li><a class="dropdown-item" href="/products?category=Clothing">Ropa</a></li>
+              <li><a class="dropdown-item" href="/products?category=Beauty">Belleza</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/products?category=Sports">Deportes</a></li>
+
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="/chat"><i class="fa-regular fa-comments"></i> Chat</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true"><i class="fa-regular fa-user"></i> Mi cuenta</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#"><i class="fa-solid fa-cart-shopping"></i> Mi carrito</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/api/sessions/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log
+              out</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="flex-shrink-0">
+
+<h1>Mi Ecommerce chat</h1>
+<p>Hola {{user.first_name}}!</p>
+<p>email {{user.email}}</p>
+<div>
+    <input id="chatBox">
+    <button type="submit" id="sendMessageButton">Enviar</button>
+</div>
+<div>
+    <p id="messageLogs"></p>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="/js/chat.js"></script>

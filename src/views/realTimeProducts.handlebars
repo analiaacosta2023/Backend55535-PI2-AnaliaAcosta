@@ -1,0 +1,37 @@
+<div>
+    <h1>Agregar producto</h1>
+    <div class="form-container">
+        <form id="add-product-form">
+            <p>Code</p>
+            <input type="text" id="code">
+            <p>Title</p>
+            <input type="text" id="title">
+            <p>Category</p>
+            <input type="text" id="category">
+            <p>Description</p>
+            <input type="text" id="description">
+            <p>Price</p>
+            <input type="number" id="price">
+            <p>Stock</p>
+            <input type="number" id="stock">
+            <button type="submit">Cargar</button>
+            <button type="reset">Cancelar</button>
+        </form>
+    </div>
+    <h1>Eliminar producto</h1>
+        <div class="form-container">
+        <form id="delete-product-form">
+            <p>Id #</p>
+            <input type="number" id="product-id">
+            <button type="submit">Cargar</button>
+            <button type="reset">Cancelar</button>
+        </form>
+    </div>
+    <h1>Lista de productos agregados hasta el momento</h1>
+    <div id="item-container">
+
+    </div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

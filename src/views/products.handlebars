@@ -1,0 +1,172 @@
+<header data-bs-theme="dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-0" style="height: 100px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/img/logo3.jpg" style="width: 150px; border: 5px outset #0549A8;
+border-radius: 40px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg"
+        aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg"
+        aria-labelledby="navbarOffcanvasLgLabel">
+
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body" style="justify-content: space-between;">
+          <div class="navbar-nav justify-content-end mb-2 mb-md-0">
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/products">Productos</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Categorías
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/products?category=Home+%26+Kitchen">Bazar y cocina</a></li>
+                <li><a class="dropdown-item" href="/products?category=Electronics">Electrónica</a></li>
+                <li><a class="dropdown-item" href="/products?category=Furniture">Muebles</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+
+                <li><a class="dropdown-item" href="/products?category=Clothing">Ropa</a></li>
+                <li><a class="dropdown-item" href="/products?category=Beauty">Belleza</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/products?category=Sports">Deportes</a></li>
+
+              </ul>
+            </li>
+
+
+          </div>
+          <div class="navbar-nav smb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/chat"><i class="fa-regular fa-comments"></i> Chat</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true"><i class="fa-regular fa-user"></i> Mi cuenta</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#"><i class="fa-solid fa-cart-shopping"></i> Mi carrito</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/api/sessions/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log
+                out</a>
+            </li>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </nav>
+<div class="gradient-custom-3 fixed-top" style="margin-top: 100px;">
+      <div id="carouselExample" class="carousel slide py-1" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <p class="my-0">Nuevos productos todas las semanas</p>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <p class="my-0">20% off con Pago en Efectivo / Transferencia Codigo: EFECTIVO</p>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <p class="my-0">3 y 6 Cuotas sin interés con todas las tarjetas bancarias</p>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <i class="fa fa-angle-left"></i>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <i class="fa fa-angle-right"></i>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+</header>
+<main>
+
+  <div class="container">
+
+    <p>Hola {{user.role}} {{user.first_name}}!</p>
+    <p>email {{user.email}}</p>
+    <h1>Productos</h1>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3">
+      {{#each docs}}
+<div class="col">
+          <div class="card" onclick="window.location.href='/products/{{this._id}}';" key="{{this._id}}">
+          <div class="row product-img">
+            <img src="img/{{this.thumbnail.[0]}}" alt="">
+            <div class="hover-content">
+              <i class="fa-solid fa-eye"></i> Ver producto
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p>id: {{this._id}}</p>
+            <p>Código: {{this.code}}</p>
+            <p>{{this.title}}</p>
+            <p>Categoría: {{this.category}}</p>
+            <p>{{this.description}}</p>
+            <p>Stock: {{this.stock}} unidades</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-dark ms-1 btn-shadow"><i class="fa-solid fa-cart-shopping"></i></button>
+              <small class="text-body-secondary">$ {{this.price}}</small>
+            </div>
+          </div>
+        </div>
+</div>
+
+
+      {{/each}}
+    </div>
+
+
+  <nav class="pagination-outer" aria-label="Page navigation">
+    <ul class="pagination px-3">
+
+      {{#if hasPrevPage}}
+      <li class="page-item">
+        <a class="page-link" href="/products?page={{prevPage}}&limit={{limit}}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="/products?page={{prevPage}}&limit={{limit}}">{{prevPage}}</a>
+      </li>
+      {{/if}}
+
+      <li class="page-item active"><a class="page-link" href="#">{{page}}</a></li>
+
+      {{#if hasNextPage}}
+      <li class="page-item"><a class="page-link" href="/products?page={{nextPage}}&limit={{limit}}">{{nextPage}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/products?page={{nextPage}}&limit={{limit}}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {{/if}}
+    </ul>
+  </nav>
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
