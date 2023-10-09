@@ -8,9 +8,6 @@ import { authorization, passportCall } from "../utils.js";
 const router = Router();
 
 router.post('/login', passport.authenticate('login', { session: false, failureRedirect: '/api/sessions/failLogin' }), async (req, res) => {
-    if (!req.user) {
-        return res.status(401).send({ status: "error", error: "Credenciales invalidas" });
-    }
 
     const serializedUser = {
         id: req.user._id,

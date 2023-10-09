@@ -32,7 +32,8 @@ export const passportCall = (strategy)=> {
         passport.authenticate(strategy, function(err, user, info){
             if (err) return next(err);
             if (!user) {
-                return res.status(401).send({error: info.messages ? info.messages : info.toString()});
+                console.log((info.messages ? info.messages : info.toString()))
+                return next();;
             }
              req.user = user;
             next();
